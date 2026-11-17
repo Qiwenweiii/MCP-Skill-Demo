@@ -7,7 +7,7 @@
 - `math_mcp.py`：FastMCP 服务器，暴露 `add` 和 `multiply` 两个工具
 - `.qoder/skills/invoice-calc/SKILL.md`：`invoice-calc` 技能，按"单价 × 数量 + 运费 10 元"计算总价
 - `skills_src/invoice-calc/SKILL.md`：技能源文件副本
-- `eval_test.py`：调用轨迹断言示例（必须先乘后加）
+- `eval_test.py`：本地轨迹断言示例（可选自测）
 - `requirements.txt`：Python 依赖
 
 ## 安装
@@ -27,8 +27,6 @@ python3 -m venv .venv
 
 ## 验证
 
-```bash
-.venv/bin/python eval_test.py
-```
+验证方式为接入 WorkBuddy：在 WorkBuddy 中注册 `math` MCP 服务器并加载 `invoice-calc` 技能，通过实际对话确认调用顺序为 `multiply` → `add`。
 
 技能执行规则：先调用 `multiply(a=单价, b=数量)` 得到小计，再调用 `add(a=小计, b=10)` 得到总价。
